@@ -15,7 +15,7 @@ Carrot.prototype.map = function(v, vi, vx, ri, rx) {
 Carrot.prototype.generate = function() {
   // #region body
   const length = this.map(Math.random(), 0, 1, this.sketch.height * 0.3, this.sketch.height * 0.5);
-  const width = this.map(Math.random(), 0, 1, this.sketch.width * 0.1, this.sketch.width * 0.4);
+  const width = this.map(Math.random(), 0, 1, length * 0.1, this.sketch.width * 0.2);
   this.bodyVertices = [];
   this.bodyStripes = [];
   this.bodyVertices.push([0, -length/2]);
@@ -54,7 +54,7 @@ Carrot.prototype.generate = function() {
   // #region stem
   const numStems = Math.round(this.map(Math.random(), 0, 1, 1, 4));
   const stemAngle = this.map(numStems, 1, 4, 0, Math.PI / 2);
-  const stemLength = this.map(Math.random(), 0, 1, length * 0.1, length * 0.4);
+  const stemLength = this.map(Math.random(), 0, 1, length * 0.2, length * 0.6);
   this.stems = [];
   for (let i = 0; i < numStems; i += 1) {
     const angle = (Math.PI * 3 / 2) + this.map(i, 0, numStems, -stemAngle/2, stemAngle/2);
@@ -83,7 +83,7 @@ Carrot.prototype.generate = function() {
 }
 
 Carrot.prototype.draw = function() {
-  this.sketch.translate(this.x, this.y);
+  this.sketch.translate(this.x, this.y * 1.25);
 
   // #region body
   this.sketch.stroke(255, 128, 0);
